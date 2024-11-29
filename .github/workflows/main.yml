@@ -46,5 +46,7 @@ jobs:
         key: ${{ secrets.HOSTING_KEY }}
         script: |
             docker stop ${{ vars.DOCKERHUB_USERNAME }}/porfolio:latest
+            docker rm ${{ vars.DOCKERHUB_USERNAME }}/porfolio:latest
+            docker rmi ${{ vars.DOCKERHUB_USERNAME }}/porfolio:latest
             docker pull ${{ vars.DOCKERHUB_USERNAME }}/porfolio:latest
             docker run -p 3093:3093 -d ${{ vars.DOCKERHUB_USERNAME }}/porfolio:latest
