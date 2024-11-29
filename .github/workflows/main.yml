@@ -25,7 +25,7 @@ jobs:
         username: ${{ vars.DOCKERHUB_USERNAME }}  # Usuario de DockerHub
         password: ${{ secrets.DOCKERHUB_PASSWORD }}  # Contraseña de DockerHub
 
-    - name: Build and push laravel php-fpm
+    - name: Build and push react image
       uses: docker/build-push-action@v6
       with:
         context: .
@@ -45,8 +45,8 @@ jobs:
         host: ${{ vars.HOSTING_PC }}
         key: ${{ secrets.HOSTING_KEY }}
         script: |
-            docker stop ${{ vars.DOCKERHUB_USERNAME }}/porfolio:latest
-            docker rm ${{ vars.DOCKERHUB_USERNAME }}/porfolio:latest
-            docker rmi ${{ vars.DOCKERHUB_USERNAME }}/porfolio:latest
+            docker stop -f ${{ vars.DOCKERHUB_USERNAME }}/porfolio
+            docker rm -f ${{ vars.DOCKERHUB_USERNAME }}/porfolio
+            docker rmi -f ${{ vars.DOCKERHUB_USERNAME }}/porfolio
             docker pull ${{ vars.DOCKERHUB_USERNAME }}/porfolio:latest
             docker run -p 3093:3093 -d ${{ vars.DOCKERHUB_USERNAME }}/porfolio:latest
