@@ -45,4 +45,5 @@ jobs:
         host: ${{ vars.HOSTING_PC }}
         key: ${{ secrets.HOSTING_KEY }}
         script: |
-        docker run -p 3093:3093 -d porfolio
+
+            docker run -p 3093:3093 -d porfolio
