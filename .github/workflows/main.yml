@@ -45,7 +45,7 @@ jobs:
         host: ${{ vars.HOSTING_PC }}
         key: ${{ secrets.HOSTING_KEY }}
         script: |
-            docker stop -f ${{ vars.DOCKERHUB_USERNAME }}/porfolio
+            docker stop ${{ vars.DOCKERHUB_USERNAME }}/porfolio
             docker rm -f ${{ vars.DOCKERHUB_USERNAME }}/porfolio
             docker rmi -f ${{ vars.DOCKERHUB_USERNAME }}/porfolio
             docker pull ${{ vars.DOCKERHUB_USERNAME }}/porfolio:latest
