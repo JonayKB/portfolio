@@ -6,7 +6,7 @@ COPY public/ /porfolio/public
 COPY src/ /porfolio/src
 COPY package.json /porfolio/
 
-RUN npm install
+RUN npm install && npm run build && npm install serve
 
 EXPOSE 3093
-CMD ["npm", "start"]
+CMD ["serve", "-s", "build", "3093"]
